@@ -1,20 +1,14 @@
 {
   "version": "0.1",
   "language": "en",
-  "words": [
-    "degit",
-    "esbuild",
-    "gjuchault",
-    "octocat",
-    "rmrf",
-    "socio"
-  ],
+  "words": ["degit", "esbuild", "ausweischeck", "octocat", "rmrf", "socio"],
   "flagWords": [],
   "ignorePaths": [
     "package.json",
     "package-lock.json",
     "yarn.lock",
     "tsconfig.json",
-    "node_modules/**"
+    "node_modules/**",
+    "src/**"
   ]
 }

@@ -61,7 +61,7 @@ console.log(reisepassResult);
 // {
 //   result: true,
 //   ausweis: {
-//     nummer: "C01X00T478",
+//     number: "C01X00T478",
 //     type: "Reisepass",
 //   },
 // }

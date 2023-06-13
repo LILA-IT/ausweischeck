@@ -23,14 +23,14 @@ describe("checkPerso", () => {
   test("should return false if the number is too short (german version)", () => {
     expect(checkPerso("123")).toMatchObject({
       result: false,
-      error: "Personalausweisnummer muss mindestens 10 Zeichen lang sein",
+      error: "Personalausweisnummer muss mindestens 10 Zeichen lang sein", // cspell:disable-line
     });
   });
 
   test("should return false if the number is not valid (german version)", () => {
     expect(checkPerso("L01X00T472")).toMatchObject({
       result: false,
-      error: "Prüfsumme stimmt nicht überein",
+      error: "Prüfsumme stimmt nicht überein", // cspell:disable-line
     });
   });
 

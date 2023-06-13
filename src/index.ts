@@ -3,8 +3,8 @@
  *  Version: 0.0.1
  *  Author: LILA.SCHULE GmbH, Deniz Celebi
  *
- *  Eine mini Library um Personalausweise oder Internationale Reisepässe auf
- *  Echtheit zu überprüfen mit Hilfe der Seriennummer
+ *  Eine mini Library um Personalausweise oder Internationale Reisepässe auf // cspell:disable-line
+ *  Echtheit zu überprüfen mit Hilfe der Seriennummer                        // cspell:disable-line
  *
  *  Just plain typescript lib to check the validity of German ID card and passport numbers
  *  with the help of the serial number.
@@ -72,7 +72,7 @@ class AusweisCheck {
     if (this.number.length < 10) {
       const error =
         this.language === LanguageEnum.de
-          ? "Personalausweisnummer muss mindestens 10 Zeichen lang sein"
+          ? "Personalausweisnummer muss mindestens 10 Zeichen lang sein" // cspell:disable-line
           : "Identity card number must be at least 10 characters long";
       return {
         result: false,
@@ -123,7 +123,7 @@ class AusweisCheck {
     } else {
       const error =
         this.language === LanguageEnum.de
-          ? "Prüfsumme stimmt nicht überein"
+          ? "Prüfsumme stimmt nicht überein" // cspell:disable-line
           : "Checksum does not match";
       return { result: false, error: error };
     }
@@ -134,7 +134,7 @@ class AusweisCheck {
     if (this.number.length < 11) {
       const error =
         this.language === LanguageEnum.de
-          ? "Reisepassnummer muss mindestens 11 Zeichen lang sein"
+          ? "Reisepassnummer muss mindestens 11 Zeichen lang sein" // cspell:disable-line
           : "Passport number must be at least 11 characters long";
       return {
         result: false,
@@ -187,7 +187,7 @@ class AusweisCheck {
     } else {
       const error =
         this.language === LanguageEnum.de
-          ? "Prüfsumme stimmt nicht überein"
+          ? "Prüfsumme stimmt nicht überein" // cspell:disable-line
           : "Checksum does not match";
       return { result: false, error: error };
     }

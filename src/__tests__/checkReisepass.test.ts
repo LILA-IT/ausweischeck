@@ -23,14 +23,14 @@ describe("checkReisepass", () => {
   test("should return false if the number is too short (german version)", () => {
     expect(checkReisepass("123")).toMatchObject({
       result: false,
-      error: "Reisepassnummer muss mindestens 11 Zeichen lang sein",
+      error: "Reisepassnummer muss mindestens 11 Zeichen lang sein", // cspell:disable-line
     });
   });
 
   test("should return false if the number is not valid (german version)", () => {
     expect(checkReisepass("C01X00T479D")).toMatchObject({
       result: false,
-      error: "Prüfsumme stimmt nicht überein",
+      error: "Prüfsumme stimmt nicht überein", // cspell:disable-line
     });
   });
 

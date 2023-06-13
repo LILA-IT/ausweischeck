@@ -207,3 +207,11 @@ export function checkReisepass(
 ): AusweisCheckResult {
   return new AusweisCheck(idNumber, language).checkReisepass;
 }
+
+export function checkGermanId(idNumber: string): AusweisCheckResult {
+  return new AusweisCheck(idNumber, "en").checkPerso;
+}
+
+export function checkGermanPassport(idNumber: string): AusweisCheckResult {
+  return new AusweisCheck(idNumber, "en").checkReisepass;
+}

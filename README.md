@@ -47,6 +47,11 @@ console.log(persoResult);
 // }
 ```
 
+### `checkGermanId(idNumber: string): AusweisCheckResult`
+
+This method duplicates the checkPerso method. It defaults to the English error message.
+It's only there for usability reasons.
+
 ### `checkReisepass(idNumber: string, language?: "de" | "en"): AusweisCheckResult`
 
 This method checks for the validity of a German Reisepass (passport) number.
@@ -66,6 +71,11 @@ console.log(reisepassResult);
 //   },
 // }
 ```
+
+### `checkGermanPassport(idNumber: string): AusweisCheckResult`
+
+This method duplicates the checkReisepass method. It defaults to the English error message.
+It's only there for usability reasons.
 
 ## 🥂 License
 

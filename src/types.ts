@@ -1,7 +1,14 @@
 export enum AusweisType {
-  Personalausweis = 'Personalausweis',
-  Reisepass = 'Reisepass',
+  Personalausweis = "Personalausweis",
+  Reisepass = "Reisepass",
 }
+
+export enum LanguageEnum {
+  de = "de",
+  en = "en",
+}
+
+export type Language = keyof typeof LanguageEnum | LanguageEnum;
 
 export interface AusweisCheckResult {
   result: boolean;
@@ -10,7 +17,7 @@ export interface AusweisCheckResult {
 }
 
 export interface Ausweis {
-  nummer: string;
+  number: string;
   type: AusweisType;
   nation?: string;
 }

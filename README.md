@@ -1,79 +1,72 @@
-# TypeScript Library Starter
+# AusweisCheck 🇩🇪
 
-![NPM](https://img.shields.io/npm/l/@gjuchault/typescript-library-starter)
-![NPM](https://img.shields.io/npm/v/@gjuchault/typescript-library-starter)
-![GitHub Workflow Status](https://github.com/gjuchault/typescript-library-starter/actions/workflows/typescript-library-starter.yml/badge.svg?branch=main)
+![NPM](https://img.shields.io/npm/l/@LILA-SCHULE/ausweischeck)
+![NPM](https://img.shields.io/npm/v/@LILA-SCHULE/ausweischeck)
+![GitHub Workflow Status](https://github.com/LILA-SCHULE/ausweischeck/actions/workflows/typescript-library-starter.yml/badge.svg?branch=main)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-Yet another (opinionated) TypeScript library starter template.
+## ✨ Features
 
-## Opinions and limitations
+Just plain typescript lib to check the validity of German ID card and passport numbers with the help of the serial number.
+Special thanks to [Deniz Celebi (@derDeno)](https://github.com/derDeno) for the [original implementation](https://github.com/derDeno/AusweisCheck).
 
-1. Relies as much as possible on each included library's defaults
-2. Only relies on GitHub Actions
-3. Does not include documentation generation
+## 🔧 Installation
 
-## Getting started
+```sh
+yarn add ausweischeck
+```
 
-1. `npx degit gjuchault/typescript-library-starter my-project` or click on the `Use this template` button on GitHub!
-2. `cd my-project`
-3. `npm install`
-4. `git init` (if you used degit)
-5. `npm run setup`
+## 🎬 Getting started
 
-To enable deployment, you will need to:
+```ts
+import { checkPerso, checkReisepass } from "ausweischeck";
 
-1. Set up the `NPM_TOKEN` secret in GitHub Actions ([Settings > Secrets > Actions](https://github.com/gjuchault/typescript-service-starter/settings/secrets/actions))
-2. Give `GITHUB_TOKEN` write permissions for GitHub releases ([Settings > Actions > General](https://github.com/gjuchault/typescript-service-starter/settings/actions) > Workflow permissions)
+const persoResult = checkPerso("L01X00T471");
+const reisepassResult = checkReisepass("C01X00T478D", "en");
+```
 
-## Features
+## 📜 API
 
-### Node.js, npm version
+### `checkPerso(idNumber: string, language?: "de" | "en"): AusweisCheckResult`
 
-TypeScript Library Starter relies on [Volta](https://volta.sh/) to ensure the Node.js version is consistent across developers. It's also used in the GitHub workflow file.
+This method checks for the validity of a German Personalausweis (ID card) number.
+The language parameter is optional and defaults to "de". The language parameter is only used for the error message.
 
-### TypeScript
+**Example:**
 
-Leverages [esbuild](https://github.com/evanw/esbuild) for blazing-fast builds but keeps `tsc` to generate `.d.ts` files.
-Generates a single ESM build.
+```ts
+const persoResult = checkPerso("L01X00T471");
 
-Commands:
+console.log(persoResult);
+// {
+//   result: true,
+//   ausweis: {
+//     number: "L01X00T47",
+//     type: "Personalausweis",
+//   },
+// }
+```
 
-- `build`: runs type checking, then ESM and `d.ts` files in the `build/` directory
-- `clean`: removes the `build/` directory
-- `type:dts`: only generates `d.ts`
-- `type:check`: only runs type checking
-- `type:build`: only generates ESM
+### `checkReisepass(idNumber: string, language?: "de" | "en"): AusweisCheckResult`
 
-### Tests
+This method checks for the validity of a German Reisepass (passport) number.
+The language parameter is optional and defaults to "de". The language parameter is only used for the error message.
 
-TypeScript Library Starter uses [Vitest](https://vitest.dev/). Coverage is done through Vitest, using [c8](https://github.com/bcoe/c8).
+**Example:**
 
-Commands:
+```ts
+const reisepassResult = checkReisepass("C01X00T478D");
 
-- `test`: runs Vitest test runner
-- `test:watch`: runs Vitest test runner in watch mode
-- `test:coverage`: runs Vitest test runner and generates coverage reports
+console.log(reisepassResult);
+// {
+//   result: true,
+//   ausweis: {
+//     nummer: "C01X00T478",
+//     type: "Reisepass",
+//   },
+// }
+```
 
-### Format & lint
+## 🥂 License
 
-This template relies on the combination of [ESLint](https://github.com/eslint/eslint) — through [TypeScript-ESLint](https://github.com/typescript-eslint/typescript-eslint) for linting, and [Prettier](https://github.com/prettier/prettier) for formatting.
-It also uses [cspell](https://github.com/streetsidesoftware/cspell) to ensure correct spelling.
-
-Commands:
-
-- `format`: runs Prettier with automatic fixing
-- `format:check`: runs Prettier without automatic fixing (used in CI)
-- `lint`: runs ESLint with automatic fixing
-- `lint:check`: runs ESLint without automatic fixing (used in CI)
-- `spell:check`: runs spell checking
-
-### Releasing
-
-Under the hood, this library uses [semantic-release](https://github.com/semantic-release/semantic-release) and [Commitizen](https://github.com/commitizen/cz-cli).
-The goal is to avoid manual release processes. Using `semantic-release` will automatically create a GitHub release (hence tags) as well as an npm release.
-Based on your commit history, `semantic-release` will automatically create a patch, feature, or breaking release.
-
-Commands:
-
-- `cz`: interactive CLI that helps you generate a proper git commit message, using [Commitizen](https://github.com/commitizen/cz-cli)
-- `semantic-release`: triggers a release (used in CI)
+[MIT](./LICENSE.md)

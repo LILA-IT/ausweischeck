@@ -1,45 +1,43 @@
-/* Ausweis Check Javascript Library
+/* AusweisCheck has been created by Deniz Celebi in 2018 and modified by LILA.SCHULE GmbH in 2023
  *
  *  Version: 0.0.1
- *  Autor: Deniz Celebi
+ *  Author: LILA.SCHULE GmbH, Deniz Celebi
  *
  *  Eine mini Library um Personalausweise oder Internationale Reisepässe auf
  *  Echtheit zu überprüfen mit Hilfe der Seriennummer
  *
+ *  Just plain typescript lib to check the validity of German ID card and passport numbers
+ *  with the help of the serial number.
  *
- *  MIT License
- *
- *  Copyright 2018 Deniz Celebi / Pixelart
- *  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
- *  to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
- *  and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- *  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *  License: MIT
  */
 
-import { AusweisCheckResult, AusweisType } from './types';
+import {
+  AusweisCheckResult,
+  AusweisType,
+  Language,
+  LanguageEnum,
+} from "./types.js";
 
 class AusweisCheck {
-  private nummer: string;
-  private alphas: { [key: string]: number };
+  private number: string;
+  private language: Language;
+  private alphas: Record<string, number>;
 
-  constructor(ausweisnummer: string) {
-    this.nummer = ausweisnummer.toUpperCase();
+  constructor(ausweisNumber: string, language: Language = LanguageEnum.de) {
+    this.number = ausweisNumber.toUpperCase();
+    this.language = language;
     this.alphas = {
-      '0': 0,
-      '1': 1,
-      '2': 2,
-      '3': 3,
-      '4': 4,
-      '5': 5,
-      '6': 6,
-      '7': 7,
-      '8': 8,
-      '9': 9,
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
       A: 10,
       B: 11,
       C: 12,
@@ -70,114 +68,142 @@ class AusweisCheck {
   }
 
   get checkPerso(): AusweisCheckResult {
-    // Wenn eingegebene Personummer weniger als 10 Zeichen hat abbrechen
-    if (this.nummer.length < 10) {
-      return { result: false, error: 'Personalausweisnummer muss mindestens 10 Zeichen lang sein' };
+    // If entered identity card number has less than 10 characters cancel
+    if (this.number.length < 10) {
+      const error =
+        this.language === LanguageEnum.de
+          ? "Personalausweisnummer muss mindestens 10 Zeichen lang sein"
+          : "Identity card number must be at least 10 characters long";
+      return {
+        result: false,
+        error: error,
+      };
     }
 
-    const prufziffer = parseInt(this.nummer.substring(9), 10);
-    const personummer = this.nummer.substring(0, 9);
-    const arr = personummer.split('');
+    const checkDigit = parseInt(this.number.substring(9), 10);
+    const persoNumber = this.number.substring(0, 9);
+    const arr = persoNumber.split("");
     let iter = 7;
-    const arrZahlen: number[] = [];
-    let endziffern = 0;
+    const arrNumbers: number[] = [];
+    let endDigits = 0;
 
-    // Jedes  Zeichen mit der dazugehörigen Zahl ersetzten und multiplizieren
+    // Replace each character with the corresponding number and multiply it.
     for (const element of arr) {
       if (iter === 7) {
         const result = this.alphas[element] * iter;
-        arrZahlen.push(result);
+        arrNumbers.push(result);
         iter = 3;
       } else if (iter === 3) {
         const result = this.alphas[element] * iter;
-        arrZahlen.push(result);
+        arrNumbers.push(result);
         iter = 1;
       } else if (iter === 1) {
         const result = this.alphas[element] * iter;
-        arrZahlen.push(result);
+        arrNumbers.push(result);
         iter = 7;
       }
     }
 
-    // Die letzten Stellen der einzelnen Ergebnisse addieren
+    // Add the last digits of the individual results
     for (let i = 0; i < 9; i++) {
-      const val = String(arrZahlen[i]);
+      const val = String(arrNumbers[i]);
       const temp = val.substring(val.length - 1);
-      endziffern += parseInt(temp, 10);
+      endDigits += parseInt(temp, 10);
     }
 
-    const ende = endziffern % 10;
-    if (ende === prufziffer) {
+    const end = endDigits % 10;
+    if (end === checkDigit) {
       return {
         result: true,
         ausweis: {
-          nummer: personummer,
+          number: persoNumber,
           type: AusweisType.Personalausweis,
         },
       };
     } else {
-      return { result: false, error: 'Prüfsumme stimmt nicht überein' };
+      const error =
+        this.language === LanguageEnum.de
+          ? "Prüfsumme stimmt nicht überein"
+          : "Checksum does not match";
+      return { result: false, error: error };
     }
   }
 
   get checkReisepass(): AusweisCheckResult {
-    // Wenn eingegebene Personummer weniger als 10 Zeichen hat abbrechen
-    if (this.nummer.length < 11) {
-      return { result: false, error: 'Reispassnummer muss mindestens 11 Zeichen lang sein' };
+    // If entered passport number has less than 11 characters cancel
+    if (this.number.length < 11) {
+      const error =
+        this.language === LanguageEnum.de
+          ? "Reisepassnummer muss mindestens 11 Zeichen lang sein"
+          : "Passport number must be at least 11 characters long";
+      return {
+        result: false,
+        error: error,
+      };
     }
 
-    const passnummer = this.nummer.substring(0, 9);
-    const prufziffer = parseInt(this.nummer.charAt(9), 10);
-    const nation = this.nummer.substring(10);
-    const arr = passnummer.split('');
+    const passNumber = this.number.substring(0, 9);
+    const checkDigit = parseInt(this.number.charAt(9), 10);
+    const nation = this.number.substring(10);
+    const arr = passNumber.split("");
     let iter = 7;
-    const arrZahlen: number[] = [];
-    let endziffern = 0;
+    const arrNumbers: number[] = [];
+    let endDigits = 0;
 
-    // Jedes  Zeichen mit der dazugehörigen Zahl ersetzten und multiplizieren
+    // Replace each character with the corresponding number and multiply it
     for (const element of arr) {
       if (iter === 7) {
         const result = this.alphas[element] * iter;
-        arrZahlen.push(result);
+        arrNumbers.push(result);
         iter = 3;
       } else if (iter === 3) {
         const result = this.alphas[element] * iter;
-        arrZahlen.push(result);
+        arrNumbers.push(result);
         iter = 1;
       } else if (iter === 1) {
         const result = this.alphas[element] * iter;
-        arrZahlen.push(result);
+        arrNumbers.push(result);
         iter = 7;
       }
     }
 
-    // Die letzten Stellen der einzelnen Ergebnisse addieren
+    // Add the last digits of the individual results
     for (let i = 0; i < 9; i++) {
-      const val = String(arrZahlen[i]);
+      const val = String(arrNumbers[i]);
       const temp = val.substring(val.length - 1);
-      endziffern += parseInt(temp, 10);
+      endDigits += parseInt(temp, 10);
     }
 
-    const ende = endziffern % 10;
-    if (ende === prufziffer) {
+    const end = endDigits % 10;
+    if (end === checkDigit) {
       return {
         result: true,
         ausweis: {
-          nummer: passnummer,
+          number: passNumber,
           type: AusweisType.Reisepass,
-          nation,
+          nation: nation,
         },
       };
     } else {
-      return { result: false, error: 'Prüfsumme stimmt nicht überein' };
+      const error =
+        this.language === LanguageEnum.de
+          ? "Prüfsumme stimmt nicht überein"
+          : "Checksum does not match";
+      return { result: false, error: error };
     }
   }
 }
 
-export function checkPerso(idNumber: string): AusweisCheckResult {
-  return new AusweisCheck(idNumber).checkPerso;
+export function checkPerso(
+  idNumber: string,
+  language?: Language
+): AusweisCheckResult {
+  return new AusweisCheck(idNumber, language).checkPerso;
 }
 
-export function checkReisepass(idNumber: string): AusweisCheckResult {
-  return new AusweisCheck(idNumber).checkReisepass;
+export function checkReisepass(
+  idNumber: string,
+  language?: Language
+): AusweisCheckResult {
+  return new AusweisCheck(idNumber, language).checkReisepass;
 }

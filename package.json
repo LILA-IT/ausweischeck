@@ -1,6 +1,6 @@
 {
   "name": "ausweischeck",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
   "type": "module",
   "exports": "./build/index.js",
   "types": "./build/index.d.ts",

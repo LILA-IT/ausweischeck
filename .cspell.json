@@ -1,14 +1,27 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "language": "en",
-  "words": ["degit", "esbuild", "ausweischeck", "octocat", "rmrf", "socio"],
+  "words": [
+    "degit",
+    "esbuild",
+    "ausweischeck",
+    "octocat",
+    "rmrf",
+    "socio",
+    "LILA.SCHULE",
+    "Deniz",
+    "Celebi",
+    "Ausweis",
+    "Personalausweis",
+    "Perso",
+    "Reisepass"
+  ],
   "flagWords": [],
   "ignorePaths": [
     "package.json",
     "package-lock.json",
     "yarn.lock",
     "tsconfig.json",
-    "node_modules/**",
-    "src/**"
+    "node_modules/**"
   ]
 }

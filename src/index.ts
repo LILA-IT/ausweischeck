@@ -209,7 +209,7 @@ export function checkReisepass(
   return new AusweisCheck(idNumber, language).checkReisepass;
 }
 
-// Renamed basen on change to EU ID
+// Renamed based on change to EU ID
 export function checkEuId(idNumber: string): AusweisCheckResult {
   return new AusweisCheck(idNumber, "en").checkPerso;
 }

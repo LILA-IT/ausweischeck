@@ -1,5 +1,5 @@
 export enum AusweisType {
-  // Renamed basen on change to EU ID
+  // Renamed based on change to EU ID
   EuId = "EU ID",
   Passport = "Passport",
 }

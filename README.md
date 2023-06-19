@@ -47,7 +47,7 @@ console.log(persoResult);
 // }
 ```
 
-### `checkGermanId(idNumber: string): AusweisCheckResult`
+### `checkEuId(idNumber: string): AusweisCheckResult`
 
 This method duplicates the checkPerso method. It defaults to the English error message.
 It's only there for usability reasons.

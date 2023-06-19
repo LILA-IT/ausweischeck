@@ -1,6 +1,6 @@
 /* AusweisCheck has been created by Deniz Celebi in 2018 and modified by LILA.SCHULE GmbH in 2023
  *
- *  Version: 0.0.1
+ *  Version: 1.0.0
  *  Author: LILA.SCHULE GmbH, Deniz Celebi
  *
  *  Eine mini Library um Personalausweise oder Internationale Reisepässe auf // cspell:disable-line
@@ -117,7 +117,7 @@ class AusweisCheck {
         result: true,
         ausweis: {
           number: persoNumber,
-          type: AusweisType.Personalausweis,
+          type: AusweisType.EuId,
         },
       };
     } else {
@@ -180,7 +180,7 @@ class AusweisCheck {
         result: true,
         ausweis: {
           number: passNumber,
-          type: AusweisType.Reisepass,
+          type: AusweisType.Passport,
           nation: nation,
         },
       };
@@ -208,7 +208,7 @@ export function checkReisepass(
   return new AusweisCheck(idNumber, language).checkReisepass;
 }
 
-export function checkGermanId(idNumber: string): AusweisCheckResult {
+export function checkEuId(idNumber: string): AusweisCheckResult {
   return new AusweisCheck(idNumber, "en").checkPerso;
 }
 

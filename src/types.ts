@@ -1,6 +1,6 @@
 export enum AusweisType {
-  Personalausweis = "Personalausweis",
-  Reisepass = "Reisepass",
+  EuId = "EU ID",
+  Passport = "Passport",
 }
 
 export enum LanguageEnum {

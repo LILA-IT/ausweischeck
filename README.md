@@ -42,7 +42,7 @@ console.log(persoResult);
 //   result: true,
 //   ausweis: {
 //     number: "L01X00T47",
-//     type: "Personalausweis",
+//     type: "EU ID",
 //   },
 // }
 ```
@@ -67,7 +67,7 @@ console.log(reisepassResult);
 //   result: true,
 //   ausweis: {
 //     number: "C01X00T478",
-//     type: "Reisepass",
+//     type: "Passport",
 //   },
 // }
 ```

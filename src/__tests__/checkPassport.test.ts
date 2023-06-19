@@ -26,7 +26,7 @@ describe("checkGermanPassport", () => {
       result: true,
       ausweis: {
         number: "C01X0006H",
-        type: "Reisepass",
+        type: "Passport",
       },
     });
   });
@@ -36,7 +36,7 @@ describe("checkGermanPassport", () => {
       result: true,
       ausweis: {
         number: "C01X00T47",
-        type: "Reisepass",
+        type: "Passport",
       },
     });
   });

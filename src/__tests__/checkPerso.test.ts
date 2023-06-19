@@ -39,7 +39,7 @@ describe("checkPerso", () => {
       result: true,
       ausweis: {
         number: "T22000129",
-        type: "Personalausweis",
+        type: "EU ID",
       },
     });
   });
@@ -49,7 +49,7 @@ describe("checkPerso", () => {
       result: true,
       ausweis: {
         number: "L01X00T47",
-        type: "Personalausweis",
+        type: "EU ID",
       },
     });
   });

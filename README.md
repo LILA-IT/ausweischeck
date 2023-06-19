@@ -1,7 +1,7 @@
 # AusweisCheck 🇩🇪
 
-![NPM](https://img.shields.io/npm/l/@LILA-SCHULE/ausweischeck)
-![NPM](https://img.shields.io/npm/v/@LILA-SCHULE/ausweischeck)
+![NPM](https://img.shields.io/npm/l/ausweischeck)
+![NPM](https://img.shields.io/npm/v/ausweischeck)
 ![GitHub Workflow Status](https://github.com/LILA-SCHULE/ausweischeck/actions/workflows/ausweischeck.yml/badge.svg?branch=main)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 

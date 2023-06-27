@@ -4,6 +4,12 @@
 ![NPM](https://img.shields.io/npm/v/ausweischeck)
 ![GitHub Workflow Status](https://github.com/LILA-SCHULE/ausweischeck/actions/workflows/ausweischeck.yml/badge.svg?branch=main)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Quality Gate Status](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=alert_status&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
+[![Maintainability Rating](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=sqale_rating&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
+[![Security](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=security_rating&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
+[![Bugs](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=bugs&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
+[![Coverage](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=coverage&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
+[![Duplicated Lines (%)](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=duplicated_lines_density&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
 
 ## ✨ Features
 

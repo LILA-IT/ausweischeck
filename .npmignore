@@ -2,6 +2,7 @@ node_modules/
 .nyc_output/
 coverage/
 sonar-project.properties
+sonar-report.xml
 src/
 .gitignore
 .github/

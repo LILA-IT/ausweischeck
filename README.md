@@ -1,4 +1,4 @@
-# AusweisCheck 🇩🇪
+# AusweisCheck 🇩🇪 (EU-ID Card Check)
 
 ![NPM](https://img.shields.io/npm/l/ausweischeck)
 ![NPM](https://img.shields.io/npm/v/ausweischeck)

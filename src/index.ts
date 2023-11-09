@@ -72,7 +72,7 @@ class AusweisCheck {
     idNumber: string,
     checkDigit: number,
     type: AusweisType,
-    nation?: string
+    nation?: string,
   ): AusweisCheckResult {
     const arr = idNumber.split("");
     let iter = 7;
@@ -163,14 +163,14 @@ class AusweisCheck {
 
 export function checkPerso(
   idNumber: string,
-  language?: Language
+  language?: Language,
 ): AusweisCheckResult {
   return new AusweisCheck(idNumber, language).checkPerso;
 }
 
 export function checkReisepass(
   idNumber: string,
-  language?: Language
+  language?: Language,
 ): AusweisCheckResult {
   return new AusweisCheck(idNumber, language).checkReisepass;
 }

@@ -2,7 +2,7 @@
 
 ![NPM](https://img.shields.io/npm/l/ausweischeck)
 ![NPM](https://img.shields.io/npm/v/ausweischeck)
-![GitHub Workflow Status](https://github.com/LILA-SCHULE/ausweischeck/actions/workflows/ausweischeck.yml/badge.svg?branch=main)
+![GitHub Workflow Status](https://github.com/LILA-IT/ausweischeck/actions/workflows/ausweischeck.yml/badge.svg?branch=main)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Quality Gate Status](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=alert_status&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
 [![Maintainability Rating](https://sonarqube.lila.systems/api/project_badges/measure?project=AusweisCheck&metric=sqale_rating&token=sqb_17d32d830cafc47fc0ea2968734531f12e89e870)](https://sonarqube.lila.systems/dashboard?id=AusweisCheck)
@@ -19,6 +19,7 @@ Special thanks to [Deniz Celebi (@derDeno)](https://github.com/derDeno) for the 
 ## 🔧 Installation
 
 ```sh
+npm install ausweischeck
 yarn add ausweischeck
 ```
 

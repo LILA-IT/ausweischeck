@@ -14,7 +14,7 @@
       "prerelease": true
     }
   ],
-  "repositoryUrl": "https://github.com/LILA-SCHULE/ausweischeck.git",
+  "repositoryUrl": "https://github.com/LILA-IT/ausweischeck.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

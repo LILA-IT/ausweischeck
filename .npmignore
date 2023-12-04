@@ -13,3 +13,4 @@ CONTRIBUTING.md
 README.md
 tsconfig.json
 tsconfig.build.json
+vite.config.ts

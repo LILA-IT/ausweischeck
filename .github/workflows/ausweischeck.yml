@@ -39,6 +39,13 @@ jobs:
       - name: Coverage
         run: npm run test:coverage
 
+      - name: Connect to Tailscale Network for Sonarqube
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
       - name: Sonarqube scan
         uses: sonarsource/sonarqube-scan-action@master
         env:

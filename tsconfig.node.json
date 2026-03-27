@@ -9,5 +9,5 @@
     "allowJs": true,
     "outDir": "build",
   },
-"include": ["vite.config.ts", ".eslintrc.json"]
+"include": ["vite.config.ts", "eslint.config.mjs"]
 }

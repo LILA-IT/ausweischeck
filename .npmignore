@@ -13,4 +13,7 @@ CONTRIBUTING.md
 README.md
 tsconfig.json
 tsconfig.build.json
+tsconfig.node.json
 vite.config.ts
+eslint.config.mjs
+bin/

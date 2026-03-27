@@ -1,7 +1,7 @@
-/* AusweisCheck has been created by Deniz Celebi in 2018 and modified by LILA.SCHULE GmbH in 2023
+/* AusweisCheck has been created by Deniz Celebi in 2018 and modified by LILA IT GmbH in 2026
  *
- *  Version: 1.0.1
- *  Author: LILA.SCHULE GmbH, Deniz Celebi
+ *  Version: 1.2.0
+ *  Author: LILA IT GmbH, Deniz Celebi
  *
  *  Eine mini Library um Personalausweise oder Internationale Reisepässe auf // cspell:disable-line
  *  Echtheit zu überprüfen mit Hilfe der Seriennummer                        // cspell:disable-line

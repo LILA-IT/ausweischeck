@@ -22,7 +22,7 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   {
-    ignores: ["eslint.config.mjs"],
+    ignores: ["eslint.config.mjs", "dist", "build", "node_modules"],
   },
   js.configs.recommended,
   typescriptEslintConfigs.eslintRecommended,

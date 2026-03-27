@@ -1,6 +1,8 @@
 build/
+dist/
 node_modules/
 .nyc_output/
 coverage/
 .DS_Store
 sonar-report.xml
+bin/deepsource

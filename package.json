@@ -3,8 +3,8 @@
   "name": "ausweischeck",
   "version": "1.1.1",
   "type": "module",
-  "exports": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "engines": {
     "node": ">=22.14.0",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "npm run clean && npm run type:dts && npm run build:main",
-    "build:main": "swc ./src -d ./build",
+    "build:main": "tsup",
     "clean": "rimraf build coverage nyc_output",
     "type:dts": "tsc --emitDeclarationOnly --project tsconfig.build.json",
     "type:check": "tsc --noEmit",
@@ -35,6 +35,22 @@
     "semantic-release": "semantic-release",
     "commit": "cz"
   },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "tsconfig": "tsconfig.build.json",
+    "format": "esm",
+    "sourcemap": true,
+    "minify": true,
+    "clean": true,
+    "exclude": [
+      "**/__tests__/**"
+    ],
+    "dts": {
+      "inferTypes": true
+    }
+  },
   "devDependencies": {
     "@eslint/compat": "^2.0.3",
     "@eslint/eslintrc": "^3.3.5",
@@ -46,8 +62,6 @@
     "@semantic-release/github": "^12.0.6",
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.0",
-    "@swc/cli": "^0.8.0",
-    "@swc/core": "^1.15.21",
     "@types/node": "^24.12.0",
     "@types/prompts": "^2.4.9",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
@@ -67,6 +81,8 @@
     "rimraf": "^6.1.3",
     "semantic-release": "^25.0.3",
     "source-map-support": "^0.5.21",
+    "terser": "^5.46.1",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.2",
     "vitest": "^4.1.2",
